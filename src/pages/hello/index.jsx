@@ -5,6 +5,9 @@ import { AtButton,AtMessage } from 'taro-ui'
 import './index.scss'
 
 export default class Index extends Component {
+  state={
+    msg:'这是一段测试文本'
+  }
 
   componentWillMount () { }
 
@@ -17,6 +20,7 @@ export default class Index extends Component {
   componentDidHide () { }
 
   clickBtn=()=>{
+    this.setState({msg:'文案被改变了'})
     Taro.atMessage({
       'message': '按钮被点击了',
       'type': 'success',
@@ -26,9 +30,9 @@ export default class Index extends Component {
   render () {
     return (
       <View className='index'>
-         <Text className='name'>Hello world morecode!</Text>
+         <Text className='name'>{this.state.msg}</Text>
          <AtMessage />
-        <AtButton type='primary' onClick={this.clickBtn}>发布</AtButton>
+        <AtButton type='primary' onClick={this.clickBtn}>按钮文案</AtButton>
        
       </View>
     )
